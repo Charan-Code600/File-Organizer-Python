@@ -1,3 +1,6 @@
+
+
+
 import os
 import shutil
 
@@ -26,26 +29,34 @@ def organize_files():
     if not os.path.exists(SOURCE_FOLDER):
         print("❌ Folder not found!")
         return
+
     files = os.listdir(SOURCE_FOLDER)
+
     if len(files) == 0:
         print("📂 Folder is empty!")
         return
+
     moved_count = 0
+
     for file in files:
         file_path = os.path.join(SOURCE_FOLDER, file)
+
         if os.path.isdir(file_path):
             continue
+
         _, extension = os.path.splitext(file)
         category = get_category(extension)
         category_folder = os.path.join(SOURCE_FOLDER, category)
         create_folder(category_folder)
         destination = os.path.join(category_folder, file)
+
         try:
             shutil.move(file_path, destination)
             print(f"✅ Moved: {file} ---> {category}/")
             moved_count += 1
         except Exception as e:
             print(f"❌ Error moving {file}: {e}")
+
     print("\n==============================")
     print(f"🎉 Total files organized: {moved_count}")
     print("==============================")
