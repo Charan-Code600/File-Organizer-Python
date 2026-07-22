@@ -32,4 +32,4 @@ python file_organizer.py
 - shutil
 
 ## Author
-Charan | Python Developer
+Charan Aade | Python Developer
